@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="ru">
+<head>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Портфолио | Каркасные дома и бытовки в Ленинградской области — АКУС</title>
+  <link rel="canonical" href="https://acusdom.ru/gallery"/>
+  <meta name="keywords" content="портфолио строительство Ленинградская область, каркасный дом фото, бытовка фото, строительство домов примеры, кейсы строительство Ленобласть, реализованные проекты каркасные дома"/>
+  <meta name="description" content="Реализованные проекты АКУС: каркасные дома, бытовки, террасы, кровля и фундаменты в Ленинградской области. Фото и описание каждого объекта."/>
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "on-surface-variant": "#65655c",
+            "secondary-container": "#eae1d7",
+            "surface-variant": "#eae8de",
+            "background": "#fffcf7",
+            "surface-container": "#f6f4ec",
+            "primary": "#745b22",
+            "surface": "#fffcf7",
+            "surface-container-low": "#fcf9f3",
+            "surface-dim": "#e4e3d7",
+            "on-secondary": "#ffffff",
+            "inverse-primary": "#f8d690",
+            "on-primary": "#fff6ec",
+            "outline-variant": "#babab0",
+            "on-surface": "#383831",
+            "primary-container": "#ffdf9e",
+            "on-primary-container": "#664e16",
+            "on-secondary-container": "#56514a",
+            "secondary-fixed-dim": "#dcd3ca",
+          },
+          fontFamily: { "headline": ["Noto Serif"], "body": ["Manrope"] }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; display: inline-block; line-height: 1; }
+    html, body { overflow-x: hidden; background: #fffcf7; color: #383831; font-family: 'Manrope', sans-serif; 
+      padding-bottom: 88px;
+    }
+    h1, h2, h3, h4 { font-family: 'Noto Serif', serif; }
+    img { max-width: 100%; height: auto; }
+    .filter-btn { transition: all 0.2s ease; cursor: pointer; }
+    .filter-btn.active { background: #745b22; color: #fff6ec; border-color: #745b22; }
+    .project-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .project-card:hover { transform: translateY(-4px); }
+    .project-card.hidden-card { display: none; }
+    .photo-slot {
+      background: #f0eee5; aspect-ratio: 4/3;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      color: #818178; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+      border-radius: 0.5rem; overflow: hidden; position: relative;
+    }
+    .photo-slot img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; transition: transform 0.4s ease; }
+    .photo-slot:hover img { transform: scale(1.04); }
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(14,14,12,0.92); align-items: center; justify-content: center; padding: 1rem; }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 90vw; max-height: 88vh; object-fit: contain; border-radius: 0.75rem; }
+    .tag { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 3px 10px; border-radius: 999px; }
+    .more-link { display: inline-flex; align-items: center; gap: 4px; color: #745b22; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; transition: opacity 0.2s; }
+    .more-link:hover { opacity: 0.65; }
+    .project-card { margin-bottom: 1.5rem; width: 100%; }
+    #projectsGrid { display: flex; gap: 1.5rem; align-items: flex-start; }
+    .grid-col { flex: 1; min-width: 0; }
+    @media (max-width: 767px) { #projectsGrid { flex-direction: column; } .grid-col { width: 100%; } }
+  
+    .mobile-nav-link {
+      transition: background-color .2s ease, color .2s ease, opacity .2s ease;
+      border-radius: 14px;
+    }
+    .mobile-nav-link:hover {
+      background: rgba(116, 91, 34, 0.08);
+      color: #745b22;
+    }
+    @media (max-width: 480px) {
+      .mobile-nav-shell {
+        bottom: 10px !important;
+        left: 12px !important;
+        right: 12px !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+      .mobile-nav-inner {
+        min-width: 0 !important;
+        width: 100% !important;
+        border-radius: 18px !important;
+        padding: 8px !important;
+      }
+      .mobile-nav-link { padding: 8px 4px !important; }
+      .mobile-nav-link span:last-child { font-size: 9px !important; }
+    }
+  </style>
+<!-- Top.Mail.Ru counter -->
+<script type="text/javascript">
+var _tmr = window._tmr || (window._tmr = []);
+_tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
+(function (d, w, id) {
+  if (d.getElementById(id)) return;
+  var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+  ts.src = "https://top-fwz1.mail.ru/js/code.js";
+  var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+  if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+})(document, window, "tmr-code");
+</script>
+<noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3755711;js=na" style="position:absolute;left:-9999px;" alt="Top.Mail.Ru" /></div></noscript>
+<!-- /Top.Mail.Ru counter -->
+</head>
+
+<body class="pt-[68px]">
+
+  <nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl border-b border-[#babab0]/20 shadow-[0_4px_20px_rgba(56,56,49,0.05)]">
+    <div class="flex justify-between items-center max-w-7xl mx-auto px-6 md:px-8 py-4">
+      <a href="index.html" class="font-serif text-2xl font-bold tracking-tighter text-[#7b5d22] no-underline hover:opacity-75 transition-opacity">АКУС</a>
+      <div class="hidden md:flex gap-8">
+        <a class="font-medium text-sm uppercase tracking-widest text-[#56514a] hover:text-[#745b22] transition-colors" href="index.html">Главная</a>
+        <a class="font-medium text-sm uppercase tracking-widest text-[#56514a] hover:text-[#745b22] transition-colors" href="index.html#services">Услуги</a>
+        <a class="font-medium text-sm uppercase tracking-widest text-[#56514a] hover:text-[#745b22] transition-colors" href="index.html#about">О нас</a>
+        <a class="font-medium text-sm uppercase tracking-widest text-[#56514a] hover:text-[#745b22] transition-colors" href="index.html#process">Процесс</a>
+        <a class="font-medium text-sm uppercase tracking-widest text-[#56514a] hover:text-[#745b22] transition-colors" href="index.html#faq">FAQ</a>
+      </div>
+      <a href="index.html#contact" class="hidden md:inline-flex bg-gradient-to-tr from-[#745b22] to-[#d5b35d] text-white px-8 py-3 rounded-full font-bold text-xs uppercase tracking-widest hover:opacity-85 transition-all">
+        Связаться с нами
+      </a>
+    </div>
+  </nav>
+
+  <section class="pt-16 pb-10 px-6 md:px-8 max-w-7xl mx-auto">
+    <div class="space-y-3 mb-10">
+      <span class="text-[#745b22] font-bold uppercase tracking-[0.3em] text-xs">Портфолио</span>
+      <h1 class="font-serif text-4xl md:text-5xl leading-tight tracking-tight">Реализованные проекты.</h1>
+      <p class="text-[#65655c] text-lg max-w-xl">Реальные объекты, которые мы построили. Без фотошопа и рендеров.</p>
+    </div>
+
+    <div class="flex flex-wrap gap-2 mb-10" id="filters">
+      <button class="filter-btn active tag bg-[#745b22] text-[#fff6ec] border border-[#745b22]" data-filter="all">Все проекты</button>
+      <button class="filter-btn tag bg-transparent text-[#56514a] border border-[#babab0]" data-filter="house">Дома</button>
+      <button class="filter-btn tag bg-transparent text-[#56514a] border border-[#babab0]" data-filter="foundation">Фундаменты</button>
+      <button class="filter-btn tag bg-transparent text-[#56514a] border border-[#babab0]" data-filter="roof">Кровля</button>
+      <button class="filter-btn tag bg-transparent text-[#56514a] border border-[#babab0]" data-filter="shed">Бытовки</button>
+      <button class="filter-btn tag bg-transparent text-[#56514a] border border-[#babab0]" data-filter="terrace">Террасы</button>
+    </div>
+
+    <div id="projectsGrid">
+      <div class="grid-col" id="col1"></div>
+      <div class="grid-col" id="col2"></div>
+      <div class="grid-col" id="col3"></div>
+    </div>
+
+    <!-- Хранилище карточек — скрыто, JS раскидывает их по колонкам -->
+    <div id="cardStorage" style="display:none;">
+      <div class="project-card bg-white rounded-2xl border border-[#babab0]/30 overflow-hidden" data-category="house">
+        <div class="grid grid-cols-2 gap-1 p-1">
+          <div class="photo-slot col-span-2"><img loading="lazy" src="d1_main.webp" alt="Каркасный дом 1"/></div>
+          <div class="photo-slot"><img loading="lazy" src="d1_2.webp" alt="Каркасный дом 1"/></div>
+          <div class="photo-slot"><img loading="lazy" src="d1_3.webp" alt="Каркасный дом 1"/></div>
+        </div>
+        <div class="p-5 space-y-3">
+          <div class="flex flex-wrap gap-1">
+            <span class="tag bg-[#ffdf9e] text-[#664e16]">Дом</span>
+          </div>
+          <h3 class="font-serif text-xl leading-snug">Дом из пеноблока 180 м²</h3>
+          <p class="text-sm text-[#65655c] leading-relaxed">Дом из пеноблока с утеплённым вентилируемым фасадом из фибросайдинга. Кровля — металлочерепица. Построили за 3 месяца.</p>
+          <div class="flex gap-4 pt-1 text-xs font-bold uppercase tracking-widest text-[#818178]">
+            <span>180 м²</span><span>·</span><span>3 месяца</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Разные дома и этапы — отдельная страница -->
+      <div class="project-card bg-white rounded-2xl border border-[#babab0]/30 overflow-hidden" data-category="house foundation roof">
+        <div class="grid grid-cols-2 gap-1 p-1">
+          <div class="photo-slot col-span-2"><img loading="lazy" src="de1_main.webp" alt="Разные дома и этапы"/></div>
+          <div class="photo-slot"><img loading="lazy" src="de1_2.webp" alt="Разные дома и этапы"/></div>
+          <div class="photo-slot"><img loading="lazy" src="de1_3.webp" alt="Разные дома и этапы"/></div>
+        </div>
+        <div class="p-5 space-y-3">
+          <div class="flex flex-wrap gap-1">
+            <span class="tag bg-[#ffdf9e] text-[#664e16]">Дома</span>
+            <span class="tag bg-[#eae1d7] text-[#56514a]">Фундаменты</span>
+            <span class="tag bg-[#fde7d3] text-[#635445]">Кровля</span>
+          </div>
+          <h3 class="font-serif text-xl leading-snug">Полный комплекс работ</h3>
+          <p class="text-sm text-[#65655c] leading-relaxed">Разные объекты и этапы — от заливки стяжки и фундамента до готового каркасного дома.</p>
+          <div class="flex items-center justify-between pt-1">
+            <div class="flex gap-4 text-xs font-bold uppercase tracking-widest text-[#818178]">
+              <span>Несколько объектов</span>
+            </div>
+            <a href="project-raznye.html" class="more-link">Подробнее <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Терраса + пристройка — 5 фото -->
+      <div class="project-card bg-white rounded-2xl border border-[#babab0]/30 overflow-hidden" data-category="terrace roof">
+        <div class="p-1 space-y-1">
+          <div class="photo-slot" style="aspect-ratio:16/7;">
+            <img loading="lazy" src="tp1_main.webp" alt="Терраса и пристройка"/>
+          </div>
+          <div class="grid grid-cols-2 gap-1">
+            <div class="photo-slot"><img loading="lazy" src="tp1_2.webp" alt="Терраса"/></div>
+            <div class="photo-slot"><img loading="lazy" src="tp1_3.webp" alt="Терраса"/></div>
+            <div class="photo-slot"><img loading="lazy" src="tp1_4.webp" alt="Терраса"/></div>
+            <div class="photo-slot"><img loading="lazy" src="tp1_5.webp" alt="Терраса"/></div>
+          </div>
+        </div>
+        <div class="p-5 space-y-3">
+          <div class="flex flex-wrap gap-1">
+            <span class="tag bg-[#eaf3de] text-[#3B6D11]">Терраса</span>
+            <span class="tag bg-[#fde7d3] text-[#635445]">Кровля</span>
+          </div>
+          <h3 class="font-serif text-xl leading-snug">Терраса с пристройкой и кровлей</h3>
+          <p class="text-sm text-[#65655c] leading-relaxed">Сложный объект — пристроить огромную террасу к маленькому дому, не попадая ни по высоте, ни по длине. Проекта не было, всё собирали сами. Вырезали часть кровли, стыковали под старый стиль. Заказчик написал кучу положительных отзывов на всех платформах.</p>
+          <div class="flex gap-4 pt-1 text-xs font-bold uppercase tracking-widest text-[#818178]">
+            <span>Комплекс работ</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Каркасный дом 2 — отдельная страница -->
+      <div class="project-card bg-white rounded-2xl border border-[#babab0]/30 overflow-hidden" data-category="house foundation roof">
+        <div class="grid grid-cols-2 gap-1 p-1">
+          <div class="photo-slot col-span-2"><img loading="lazy" src="d2_main.webp" alt="Каркасный дом 2"/></div>
+          <div class="photo-slot"><img loading="lazy" src="d2_2.webp" alt="Каркасный дом 2"/></div>
+          <div class="photo-slot"><img loading="lazy" src="d2_3.webp" alt="Каркасный дом 2"/></div>
+        </div>
+        <div class="p-5 space-y-3">
+          <div class="flex flex-wrap gap-1">
+            <span class="tag bg-[#ffdf9e] text-[#664e16]">Дом</span>
+            <span class="tag bg-[#eae1d7] text-[#56514a]">Фундамент</span>
+            <span class="tag bg-[#fde7d3] text-[#635445]">Кровля</span>
+          </div>
+          <h3 class="font-serif text-xl leading-snug">Каркасный дом 130 м² — люкс</h3>
+          <p class="text-sm text-[#65655c] leading-relaxed">Дом люкс-класса на свайном фундаменте. Каркас из сухого строганного материала, утепление 250 мм, гибкая черепица, кровля утеплена 300 мм. Построили за 3 месяца.</p>
+          <div class="flex items-center justify-between pt-1">
+            <div class="flex gap-4 text-xs font-bold uppercase tracking-widest text-[#818178]">
+              <span>130 м²</span><span>·</span><span>3 месяца</span>
+            </div>
+            <a href="project-dom2.html" class="more-link">Подробнее <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Бытовка 2 -->
+      <div class="project-card bg-white rounded-2xl border border-[#babab0]/30 overflow-hidden" data-category="shed">
+        <div class="grid grid-cols-2 gap-1 p-1">
+          <div class="photo-slot col-span-2"><img loading="lazy" src="bit2_main.webp" alt="Бытовка 2"/></div>
+          <div class="photo-slot"><img loading="lazy" src="bit2_2.webp" alt="Бытовка 2"/></div>
+          <div class="photo-slot"><img loading="lazy" src="bit2_3.webp" alt="Бытовка 2"/></div>
+        </div>
+        <div class="p-5 space-y-3">
+          <div class="flex flex-wrap gap-1">
+            <span class="tag bg-[#eae8de] text-[#56514a]">Бытовка</span>
+          </div>
+          <h3 class="font-serif text-xl leading-snug">Бытовки любого формата</h3>
+          <p class="text-sm text-[#65655c] leading-relaxed">Строим бытовки под любой запрос и бюджет — тёплые, холодные, любой площади. Стандартные и нестандартные. Быстро, надёжно, максимально экономно.</p>
+          <div class="flex gap-4 pt-1 text-xs font-bold uppercase tracking-widest text-[#818178]">
+            <span>1–2 дня</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Кровля -->
+      <div class="project-card bg-white rounded-2xl border border-[#babab0]/30 overflow-hidden" data-category="roof">
+        <div class="p-1">
+          <div class="photo-slot" style="aspect-ratio:4/3;">
+            <img loading="lazy" src="kro1.webp" alt="Замена кровли"/>
+          </div>
+        </div>
+        <div class="p-5 space-y-3">
+          <div class="flex flex-wrap gap-1">
+            <span class="tag bg-[#fde7d3] text-[#635445]">Кровля</span>
+          </div>
+          <h3 class="font-serif text-xl leading-snug">Замена кровли на готовом доме</h3>
+          <p class="text-sm text-[#65655c] leading-relaxed">Старая кровля из ондулина протекала — обрешётка была из случайных обрезков, материал выработал свой ресурс. Полностью демонтировали, укрепили стропила и перекрыли металлочерепицей под вентилируемую кровлю. Заказчик остался доволен — и больше не звонил, что лучший знак.</p>
+          <div class="flex gap-4 pt-1 text-xs font-bold uppercase tracking-widest text-[#818178]">
+            <span>Кровля под ключ</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Пристройка -->
+      <div class="project-card bg-white rounded-2xl border border-[#babab0]/30 overflow-hidden" data-category="terrace roof">
+        <div class="grid grid-cols-1 gap-1 p-1">
+          <div class="photo-slot"><img loading="lazy" src="pri1_main.webp" alt="Пристройка"/></div>
+          <div class="photo-slot"><img loading="lazy" src="pri1_2.webp" alt="Пристройка"/></div>
+        </div>
+        <div class="p-5 space-y-3">
+          <div class="flex flex-wrap gap-1">
+            <span class="tag bg-[#eaf3de] text-[#3B6D11]">Терраса</span>
+            <span class="tag bg-[#fde7d3] text-[#635445]">Кровля</span>
+          </div>
+          <h3 class="font-serif text-xl leading-snug">Пристройка к дому</h3>
+          <p class="text-sm text-[#65655c] leading-relaxed">Каркасная пристройка к жилому дому. Заказчик хотел сохранить стиль — две стороны и кровлю обшили кликфальцем, фронтон закрыли сайдингом, который остался у заказчика. Внутри — лестница, отделка, окна и двери. Всё аккуратно, всё красиво. Сдали за неделю.</p>
+          <div class="flex gap-4 pt-1 text-xs font-bold uppercase tracking-widest text-[#818178]">
+            <span>7 дней</span><span>·</span><span>Под ключ</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Бытовка 1 — 4 фото (1 широкая + 3 маленьких) -->
+      <div class="project-card bg-white rounded-2xl border border-[#babab0]/30 overflow-hidden" data-category="shed">
+        <div class="p-1 space-y-1">
+          <div class="photo-slot" style="aspect-ratio:16/7;">
+            <img loading="lazy" src="bit1_main.webp" alt="Бытовка 1"/>
+          </div>
+          <div class="grid grid-cols-3 gap-1">
+            <div class="photo-slot"><img loading="lazy" src="bit1_2.webp" alt="Бытовка 1"/></div>
+            <div class="photo-slot"><img loading="lazy" src="bit1_3.webp" alt="Бытовка 1"/></div>
+            <div class="photo-slot"><img loading="lazy" src="bit1_4.webp" alt="Бытовка 1"/></div>
+          </div>
+        </div>
+        <div class="p-5 space-y-3">
+          <div class="flex flex-wrap gap-1">
+            <span class="tag bg-[#eae8de] text-[#56514a]">Бытовка</span>
+          </div>
+          <h3 class="font-serif text-xl leading-snug">Бытовка с утеплением за 1 день</h3>
+          <p class="text-sm text-[#65655c] leading-relaxed">Каркасная бытовка 6×2 м. Снаружи — вагонка, внутри — ОСБ, вентиляционный зазор в кровле, профлист сверху. Утеплённая, без окон, с дверью. Хранят велосипеды и всё такое. Смонтировали и сдали за один день.</p>
+          <div class="flex gap-4 pt-1 text-xs font-bold uppercase tracking-widest text-[#818178]">
+            <span>12 м²</span><span>·</span><span>1 день</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- конец cardStorage -->
+  </section>
+
+  <section class="py-16 px-6 md:px-8 bg-[#f6f4ec] mt-16">
+    <div class="max-w-2xl mx-auto text-center space-y-6">
+      <h2 class="font-serif text-3xl md:text-4xl leading-tight">Хотите такой же результат?</h2>
+      <p class="text-[#65655c] text-lg">Оставьте заявку — обсудим ваш проект и составим смету.</p>
+      <a href="index.html#contact" class="inline-flex items-center gap-3 bg-[#745b22] text-[#fff6ec] px-10 py-5 rounded-full font-bold uppercase tracking-widest text-sm hover:opacity-90 transition-all shadow-xl">
+        Обсудить проект <span class="material-symbols-outlined">arrow_forward</span>
+      </a>
+    </div>
+  </section>
+
+  <footer class="w-full border-t border-[#babab0]/15 py-8 bg-[#fffcf7]">
+    <div class="max-w-7xl mx-auto px-6 md:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <span class="font-serif text-xl text-[#7b5d22]">АКУС</span>
+      <p class="text-xs text-[#56514a] tracking-widest uppercase">© 2026 АКУС · Строим без сюрпризов</p>
+    </div>
+  </footer>
+
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white/70 hover:text-white">
+      <span class="material-symbols-outlined text-3xl">close</span>
+    </button>
+    <img loading="lazy" id="lightboxImg" src="" alt=""/>
+  </div>
+
+  <script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const col1 = document.getElementById('col1');
+  const col2 = document.getElementById('col2');
+  const col3 = document.getElementById('col3');
+  const cols = [col1, col2, col3];
+
+  // Сохраняем все карточки один раз
+  const allCards = Array.from(document.querySelectorAll('#cardStorage .project-card'));
+
+  function getColCount() {
+    if (window.innerWidth >= 1280) return 3;
+    if (window.innerWidth >= 768) return 2;
+    return 1;
+  }
+
+  function distributeCards(filter) {
+    // Очищаем колонки
+    cols.forEach(c => c.innerHTML = '');
+
+    const visible = allCards.filter(card =>
+      filter === 'all' || card.dataset.category.split(' ').includes(filter)
+    );
+
+    const colCount = getColCount();
+    visible.forEach((card, i) => {
+      cols[i % colCount].appendChild(card);
+    });
+  }
+
+  // При загрузке — показать все
+  distributeCards('all');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      distributeCards(btn.dataset.filter);
+    });
+  });
+
+  // При изменении размера окна — перераспределить
+  window.addEventListener('resize', () => {
+    const activeFilter = document.querySelector('.filter-btn.active')?.dataset.filter || 'all';
+    distributeCards(activeFilter);
+  });
+
+  document.addEventListener('click', (e) => {
+    const img = e.target.closest('.photo-slot img');
+    if (img) {
+      e.stopPropagation();
+      document.getElementById('lightboxImg').src = img.src;
+      document.getElementById('lightbox').classList.add('open');
+    }
+  });
+
+  function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
+  document.getElementById('lightbox').addEventListener('click', closeLightbox);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+
+
+  <!-- Мобильное нижнее меню -->
+  <nav class="mobile-nav-shell fixed bottom-8 left-0 right-0 flex justify-center items-center z-50 px-4 md:hidden">
+    <div class="mobile-nav-inner bg-[#eae8de]/82 backdrop-blur-2xl rounded-full px-4 py-2 shadow-[0_30px_50px_rgba(56,56,49,0.08)] flex gap-1 min-w-[320px] items-center justify-around">
+      <a class="mobile-nav-link flex flex-col items-center justify-center text-[#56514a] p-2" href="index.html">
+        <span class="material-symbols-outlined">home</span>
+        <span class="text-[10px] font-bold uppercase tracking-wider mt-1">Главная</span>
+      </a>
+      <a class="mobile-nav-link flex flex-col items-center justify-center text-[#56514a] p-2" href="index.html#calculator">
+        <span class="material-symbols-outlined">calculate</span>
+        <span class="text-[10px] font-bold uppercase tracking-wider mt-1">Расчёт</span>
+      </a>
+      <a class="mobile-nav-link flex flex-col items-center justify-center text-[#56514a] p-2" href="index.html#faq">
+        <span class="material-symbols-outlined">quiz</span>
+        <span class="text-[10px] font-bold uppercase tracking-wider mt-1">FAQ</span>
+      </a>
+      <a class="mobile-nav-link flex flex-col items-center justify-center text-[#56514a] p-2" href="index.html#contact">
+        <span class="material-symbols-outlined">mail</span>
+        <span class="text-[10px] font-bold uppercase tracking-wider mt-1">Связь</span>
+      </a>
+    </div>
+  </nav>
+</body>
+</html>
