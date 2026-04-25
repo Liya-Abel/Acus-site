@@ -24,78 +24,12 @@
   <meta property="og:image" content="https://acusdom.ru/hero.webp"/>
  
   <!-- ИСПРАВЛЕНО: объединены два запроса к Google Fonts в один -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
- 
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
- 
-  <script>
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          colors: {
-            "inverse-on-surface": "#9e9d98",
-            "primary-fixed": "#ffdf9e",
-            "on-tertiary-fixed": "#504234",
-            "tertiary-fixed-dim": "#eed9c6",
-            "surface-container-high": "#f0eee5",
-            "tertiary-container": "#fde7d3",
-            "on-tertiary-container": "#635445",
-            "on-primary-container": "#664e16",
-            "on-surface-variant": "#65655c",
-            "secondary-container": "#eae1d7",
-            "on-tertiary-fixed-variant": "#6d5e4f",
-            "on-error": "#ffffff",
-            "surface-variant": "#eae8de",
-            "tertiary": "#716252",
-            "secondary-fixed": "#eae1d7",
-            "on-secondary-fixed-variant": "#605b53",
-            "primary-fixed-dim": "#f2d08b",
-            "tertiary-fixed": "#fde7d3",
-            "error-dim": "#5c1202",
-            "surface-tint": "#745b22",
-            "primary-dim": "#674f16",
-            "secondary": "#69635c",
-            "surface-container-highest": "#eae8de",
-            "tertiary-dim": "#645647",
-            "inverse-surface": "#0e0e0c",
-            "secondary-dim": "#5d5750",
-            "surface-bright": "#fffcf7",
-            "outline": "#818178",
-            "secondary-fixed-dim": "#dcd3ca",
-            "on-background": "#383831",
-            "on-surface": "#383831",
-            "on-tertiary": "#ffffff",
-            "on-secondary-fixed": "#433f38",
-            "background": "#fffcf7",
-            "surface-container": "#f6f4ec",
-            "primary": "#745b22",
-            "surface": "#fffcf7",
-            "surface-container-low": "#fcf9f3",
-            "on-primary-fixed-variant": "#71581f",
-            "surface-dim": "#e4e3d7",
-            "error": "#a54731",
-            "on-secondary": "#ffffff",
-            "inverse-primary": "#f8d690",
-            "on-primary": "#fff6ec",
-            "outline-variant": "#babab0",
-            "on-error-container": "#742410",
-            "on-primary-fixed": "#523c03",
-            "surface-container-lowest": "#ffffff",
-            "on-secondary-container": "#56514a",
-            "primary-container": "#ffdf9e",
-            "error-container": "#fe8b70"
-          },
-          fontFamily: {
-            "headline": ["Noto Serif"],
-            "body": ["Manrope"],
-            "label": ["Manrope"]
-          }
-        }
-      }
-    }
-  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" as="style" onload="this.rel='stylesheet'"/>
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/></noscript>
  
   <style>
     .material-symbols-outlined {
@@ -115,11 +49,6 @@
  
     h1, h2, h3, h4 {
       font-family: 'Noto Serif', serif;
-    }
- 
-    img {
-      max-width: 100%;
-      height: auto;
     }
  
     .glass-card {
@@ -572,6 +501,21 @@
     #area { -moz-appearance: textfield; }
   
     
+  
+    /* Portfolio bento grid — equal row heights */
+    @media (min-width: 768px) {
+      .portfolio-bento { grid-template-rows: 1fr 1fr; }
+    }
+
+    /* Custom select dropdown */
+    .custom-select-trigger { user-select: none; }
+    .custom-select-trigger:focus { outline: 2px solid var(--color-primary, #745b22); outline-offset: 2px; }
+    .custom-select-options.open { display: block; animation: dropIn .18s ease; }
+    @keyframes dropIn { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }
+    .custom-option[aria-selected="true"] { background: rgba(116,91,34,0.08); color: var(--color-primary, #745b22); font-weight: 700; }
+    .info-tooltip { pointer-events: none; }
+    .info-tooltip.visible { display: block !important; animation: fadeIn .15s ease; }
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
   </style>
   <link rel="preload" as="image" href="hero.webp">
 <!-- Top.Mail.Ru counter -->
@@ -586,7 +530,7 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
   if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
 })(document, window, "tmr-code");
 </script>
-<noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3755711;js=na" style="position:absolute;left:-9999px;" alt="Top.Mail.Ru" /></div></noscript>
+<noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3755711;js=na" style="position:absolute;left:-9999px;" width="1" height="1" alt="Top.Mail.Ru" /></div></noscript>
 <!-- /Top.Mail.Ru counter -->
 
   <!-- Schema.org — разметка для Яндекс и Google -->
@@ -642,6 +586,7 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
   }
   </script>
 
+  <link rel="stylesheet" href="style.css"/>
 </head>
  
 <body class="selection:bg-primary-container selection:text-on-primary-container">
@@ -663,11 +608,12 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
       </a>
     </div>
   </nav>
+  <main>
  
   <header id="home" class="hero-mobile-tight relative flex items-center pt-40 md:pt-44 pb-3 md:pb-5 min-h-[72vh] md:min-h-[80vh] overflow-hidden">
     <div class="absolute inset-0 z-0">
       <!-- ИСПРАВЛЕНО: добавлен alt-атрибут -->
-      <img class="w-full h-full object-cover brightness-[0.85] saturate-[0.8]" src="hero.webp" alt="Каркасное строительство АКУС, Ленинградская область"/>
+      <img fetchpriority="high" class="w-full h-full object-cover brightness-[0.85] saturate-[0.8]" src="hero.webp" alt="Каркасное строительство АКУС, Ленинградская область"/>
       <div class="absolute inset-0 bg-gradient-to-b from-transparent via-background/16 to-background"></div>
     </div>
  
@@ -837,7 +783,7 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
         <div class="process-step relative space-y-4 min-h-[120px]">
           <div class="text-7xl font-serif text-outline-variant/25 absolute -top-5 -left-1">01</div>
           <div class="relative z-10 pt-5">
-            <h4 class="text-xl font-bold mb-2">Заявка</h4>
+            <h3 class="text-xl font-bold mb-2">Заявка</h3>
             <p class="text-on-surface-variant text-sm leading-relaxed">Вы пишете или звоните. Как вам удобно.</p>
           </div>
         </div>
@@ -845,7 +791,7 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
         <div class="process-step relative space-y-4 min-h-[120px]">
           <div class="text-7xl font-serif text-outline-variant/25 absolute -top-5 -left-1">02</div>
           <div class="relative z-10 pt-5">
-            <h4 class="text-xl font-bold mb-2">Выезд и замер</h4>
+            <h3 class="text-xl font-bold mb-2">Выезд и замер</h3>
             <p class="text-on-surface-variant text-sm leading-relaxed">Приезжаем на объект, чтобы увидеть реальные условия и задачу на месте.</p>
           </div>
         </div>
@@ -853,7 +799,7 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
         <div class="process-step relative space-y-4 min-h-[120px]">
           <div class="text-7xl font-serif text-outline-variant/25 absolute -top-5 -left-1">03</div>
           <div class="relative z-10 pt-5">
-            <h4 class="text-xl font-bold mb-2">Смета</h4>
+            <h3 class="text-xl font-bold mb-2">Смета</h3>
             <p class="text-on-surface-variant text-sm leading-relaxed">Составляем понятный предварительный расчёт и обсуждаем варианты.</p>
           </div>
         </div>
@@ -861,7 +807,7 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
         <div class="process-step relative space-y-4 min-h-[120px]">
           <div class="text-7xl font-serif text-outline-variant/25 absolute -top-5 -left-1">04</div>
           <div class="relative z-10 pt-5">
-            <h4 class="text-xl font-bold mb-2">Договор</h4>
+            <h3 class="text-xl font-bold mb-2">Договор</h3>
             <p class="text-on-surface-variant text-sm leading-relaxed">Фиксируем договорённости, условия и график поэтапной оплаты.</p>
           </div>
         </div>
@@ -869,7 +815,7 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
         <div class="process-step relative space-y-4 min-h-[120px]">
           <div class="text-7xl font-serif text-outline-variant/25 absolute -top-5 -left-1">05</div>
           <div class="relative z-10 pt-5">
-            <h4 class="text-xl font-bold mb-2">Строительство</h4>
+            <h3 class="text-xl font-bold mb-2">Строительство</h3>
             <p class="text-on-surface-variant text-sm leading-relaxed">Работаем аккуратно, держим связь и отправляем фото- и видеоотчёты.</p>
           </div>
         </div>
@@ -877,7 +823,7 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
         <div class="process-step relative space-y-4 min-h-[120px]">
           <div class="text-7xl font-serif text-outline-variant/25 absolute -top-5 -left-1">06</div>
           <div class="relative z-10 pt-5">
-            <h4 class="text-xl font-bold mb-2">Сдача</h4>
+            <h3 class="text-xl font-bold mb-2">Сдача</h3>
             <p class="text-on-surface-variant text-sm leading-relaxed">Проверяем результат на соответствие договорённостям, закрываем и сдаём объект.</p>
           </div>
         </div>
@@ -897,7 +843,7 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
         <div class="space-y-3">
           <div class="flex items-center gap-4 text-error-container">
             <span class="material-symbols-outlined">warning</span>
-            <h4 class="text-lg font-bold">Страшно вносить оплату</h4>
+            <h3 class="text-lg font-bold">Страшно вносить оплату</h3>
           </div>
           <p class="text-surface-variant/70 text-sm ml-10">Наша работа разбита на понятные этапы: вы заранее знаете, за что и сколько платите.</p>
         </div>
@@ -905,7 +851,7 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
         <div class="space-y-3">
           <div class="flex items-center gap-4 text-error-container">
             <span class="material-symbols-outlined">running_with_errors</span>
-            <h4 class="text-lg font-bold">Вдруг пропадут по пути</h4>
+            <h3 class="text-lg font-bold">Вдруг пропадут по пути</h3>
           </div>
           <p class="text-surface-variant/70 text-sm ml-10">Мы постоянно на связи и работаем по прозрачной логике, а не "потом напишем".</p>
         </div>
@@ -913,7 +859,7 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
         <div class="space-y-3">
           <div class="flex items-center gap-4 text-error-container">
             <span class="material-symbols-outlined">query_stats</span>
-            <h4 class="text-lg font-bold">Вдруг за стенами скрыт брак</h4>
+            <h3 class="text-lg font-bold">Вдруг за стенами скрыт брак</h3>
           </div>
           <p class="text-surface-variant/70 text-sm ml-10">Систематические фото- и видеоотчёты по ключевым этапам и скрытым работам.</p>
         </div>
@@ -925,22 +871,21 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
     <div class="max-w-7xl mx-auto px-6 md:px-8">
       <h2 class="font-serif mb-10 md:mb-14 text-left md:text-center">Реальные объекты и этапы.</h2>
  
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-6 h-auto md:h-[760px]">
-        <div class="md:col-span-6 relative rounded-xl overflow-hidden group">
-          <!-- ИСПРАВЛЕНО: добавлен alt -->
-          <img loading="lazy" class="w-full h-full min-h-[300px] object-cover transition-transform duration-700 group-hover:scale-105" src="dom.webp" alt="Каркасный дом АКУС">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-6">
+        <div class="md:col-span-6 relative rounded-xl overflow-hidden group" style="height:360px">
+          <img loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="dom.webp" alt="Каркасный дом АКУС">
         </div>
- 
-        <div class="md:col-span-6 relative rounded-xl overflow-hidden group">
-          <img loading="lazy" class="w-full h-full min-h-[300px] object-cover transition-transform duration-700 group-hover:scale-105" src="kar2.webp" alt="Каркас АКУС">
+
+        <div class="md:col-span-6 relative rounded-xl overflow-hidden group" style="height:360px">
+          <img loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="kar2.webp" alt="Каркас АКУС">
         </div>
- 
-        <div class="md:col-span-4 relative rounded-xl overflow-hidden group">
-          <img loading="lazy" class="w-full h-full min-h-[300px] object-cover transition-transform duration-700 group-hover:scale-105" src="bit.webp" alt="Бытовка АКУС">
+
+        <div class="md:col-span-4 relative rounded-xl overflow-hidden group" style="height:360px">
+          <img loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="bit.webp" alt="Бытовка АКУС">
         </div>
- 
-        <div class="md:col-span-8 relative rounded-xl overflow-hidden group">
-          <img loading="lazy" class="w-full h-full min-h-[300px] object-cover transition-transform duration-700 group-hover:scale-105" src="kro.webp" alt="Крыша АКУС">
+
+        <div class="md:col-span-8 relative rounded-xl overflow-hidden group" style="height:360px">
+          <img loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="kro.webp" alt="Крыша АКУС">
         </div>
       </div>
     </div>
@@ -972,29 +917,46 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
           <div class="space-y-7">
             <div class="space-y-2">
               <label for="area" class="block text-sm font-bold uppercase tracking-widest text-on-surface/60">Площадь постройки (м²)</label>
-              <input id="area" class="w-full bg-surface-container/60 px-6 py-4 rounded-2xl border-none focus:ring-2 focus:ring-primary transition-all text-xl" placeholder="Например, 120" type="number" min="10" max="500" value="10"/>
+              <input id="area" aria-label="Площадь постройки в квадратных метрах" class="w-full bg-surface-container/60 px-6 py-4 rounded-2xl border-none focus:ring-2 focus:ring-primary transition-all text-xl" placeholder="Например, 120" type="number" min="10" max="500" value="10"/>
             </div>
  
             <div class="space-y-2">
               <label for="type" class="block text-sm font-bold uppercase tracking-widest text-on-surface/60">Тип постройки</label>
-              <div class="relative">
-                <select id="type" class="w-full bg-surface-container/60 px-6 py-4 rounded-2xl border-none focus:ring-2 focus:ring-primary text-xl font-medium cursor-pointer">
-                  <option value="19900">Каркасный дом — Эконом</option>
-                  <option value="29900">Каркасный дом — Стандарт</option>
-                  <option value="85000">Каркасный дом — Люкс</option>
-                  <option value="6500">Кровля Комплекс</option>
-                  <option value="7500">Бытовка</option>
-                  <option value="8800">Бытовка с утеплением</option>
-                  <option value="7600">Терраса</option>
-                </select>
-                
-              </div>
+              <div class="relative" id="typeDropdownWrapper">
+                  <!-- Скрытый input для передачи значения в калькулятор -->
+                  <input type="hidden" id="type" value="19900"/>
+                  <!-- Кастомный дропдаун -->
+                  <div class="custom-select-trigger w-full bg-surface-container/60 px-6 py-4 rounded-2xl border-none focus:ring-2 focus:ring-primary text-xl font-medium cursor-pointer flex items-center justify-between select-none" id="typeSelectTrigger" tabindex="0" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-label="Тип постройки">
+                    <span id="typeSelectLabel">Каркасный дом — Эконом</span>
+                    <span class="material-symbols-outlined text-on-surface-variant" style="font-size:20px;transition:transform .2s" id="typeSelectArrow">expand_more</span>
+                  </div>
+                  <ul class="custom-select-options absolute left-0 right-0 top-full mt-2 bg-surface-container-high rounded-2xl shadow-xl z-50 overflow-hidden hidden" id="typeSelectOptions" role="listbox" aria-label="Тип постройки">
+                    <li class="custom-option flex items-center justify-between px-6 py-3.5 cursor-pointer hover:bg-primary/10 transition-colors text-base font-medium" data-value="19900" role="option" aria-selected="true">
+                      <span>Каркасный дом — Эконом</span>
+                      <button type="button" class="info-btn ml-3 flex-shrink-0 w-6 h-6 rounded-full bg-primary/15 text-primary flex items-center justify-center text-xs font-bold hover:bg-primary/30 transition-colors" data-info="Каркасный дом класса «Эконом»&#10;&#10;Используются сертифицированные материалы базового уровня: OSB-3, утеплитель Knauf, профнастил или металлочерепица эконом-серии. Оптимальный выбор для бюджетного строительства без потери надёжности конструкции." aria-label="Информация об Эконом">ⓘ</button>
+                    </li>
+                    <li class="custom-option flex items-center justify-between px-6 py-3.5 cursor-pointer hover:bg-primary/10 transition-colors text-base font-medium" data-value="29900" role="option">
+                      <span>Каркасный дом — Стандарт</span>
+                      <button type="button" class="info-btn ml-3 flex-shrink-0 w-6 h-6 rounded-full bg-primary/15 text-primary flex items-center justify-center text-xs font-bold hover:bg-primary/30 transition-colors" data-info="Каркасный дом класса «Стандарт»&#10;&#10;Материалы среднего уровня: OSB-3 усиленный, утеплитель Rockwool или аналог, металлочерепица Монтеррей или Супермонтеррей. Улучшенная теплоизоляция и шумоизоляция, увеличенный срок службы." aria-label="Информация о Стандарт">ⓘ</button>
+                    </li>
+                    <li class="custom-option flex items-center justify-between px-6 py-3.5 cursor-pointer hover:bg-primary/10 transition-colors text-base font-medium" data-value="85000" role="option">
+                      <span>Каркасный дом — Люкс</span>
+                      <button type="button" class="info-btn ml-3 flex-shrink-0 w-6 h-6 rounded-full bg-primary/15 text-primary flex items-center justify-center text-xs font-bold hover:bg-primary/30 transition-colors" data-info="Каркасный дом класса «Люкс»&#10;&#10;Для постройки используются премиальные материалы: Максимальное энергосбережение." aria-label="Информация о Люкс">ⓘ</button>
+                    </li>
+                    <li class="custom-option px-6 py-3.5 cursor-pointer hover:bg-primary/10 transition-colors text-base font-medium" data-value="6500" role="option"><span>Кровля Комплекс</span></li>
+                    <li class="custom-option px-6 py-3.5 cursor-pointer hover:bg-primary/10 transition-colors text-base font-medium" data-value="7500" role="option"><span>Бытовка</span></li>
+                    <li class="custom-option px-6 py-3.5 cursor-pointer hover:bg-primary/10 transition-colors text-base font-medium" data-value="8800" role="option"><span>Бытовка с утеплением</span></li>
+                    <li class="custom-option px-6 py-3.5 cursor-pointer hover:bg-primary/10 transition-colors text-base font-medium" data-value="7600" role="option"><span>Терраса</span></li>
+                  </ul>
+                  <!-- Тултип -->
+                  <div class="info-tooltip hidden absolute z-[60] text-sm rounded-2xl p-4 shadow-lg max-w-xs" style="width:max-content;max-width:300px;white-space:pre-line;background:#fffcf7;color:#745b22;border:1.5px solid rgba(116,91,34,0.25);padding:12px 14px;" id="typeInfoTooltip"></div>
+                </div>
             </div>
  
             <div class="space-y-2">
               <label for="foundation" class="block text-sm font-bold uppercase tracking-widest text-on-surface/60">Тип фундамента</label>
               <div class="relative">
-                <select id="foundation" class="w-full bg-surface-container/60 px-6 py-4 rounded-2xl border-none focus:ring-2 focus:ring-primary text-xl font-medium cursor-pointer">
+                <select id="foundation" aria-label="Тип фундамента" class="w-full bg-surface-container/60 px-6 py-4 rounded-2xl border-none focus:ring-2 focus:ring-primary text-xl font-medium cursor-pointer">
   <option value="none">Без фундамента</option>
   <option value="piles">Свайный фундамент</option>
   <option value="slab">ЖБ плита (25 см)</option>
@@ -1137,6 +1099,18 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
             </div>
           </div>
         </div>
+
+          <div class="flex items-center gap-5">
+            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+              <svg width="33" height="33" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M25.7 34c-10.8 0-17-7.4-17.3-19.7h5.4c.2 9 4.2 12.8 7.3 13.6V14.3h5.1v7.8c3.1-.3 6.3-3.9 7.4-7.8h5c-.8 4.5-4.3 8.1-6.8 9.6 2.5 1.2 6.5 4.3 8.1 10.1h-5.6c-1.2-3.9-4.3-6.9-8.1-7.3V34h-.5z" fill="currentColor"/>
+              </svg>
+            </div>
+            <div>
+              <span class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Мы ВКонтакте</span>
+              <a href="https://vk.com/acusdom" target="_blank" rel="noopener" class="text-lg font-bold hover:text-primary transition-colors">vk.com/acusdom</a>
+            </div>
+          </div>
       </div>
  
       <!-- ИСПРАВЛЕНО: добавлен honeypot против ботов; убран _captcha:false; исправлена обработка ошибок; дописан обработчик клика вне модалки -->
@@ -1172,6 +1146,7 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
         <select
           required
           name="Услуга"
+          aria-label="Услуга"
           class="w-full bg-surface-container px-6 py-5 rounded-xl border-none focus:ring-2 focus:ring-primary appearance-none"
         >
           <option value="" selected disabled>Выберите услугу</option>
@@ -1236,6 +1211,7 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
     </div>
   </section>
  
+  </main>
   <footer class="w-full border-t border-[#babab0]/15 pt-16 pb-16 bg-[#fffcf7]">
     <div class="max-w-7xl mx-auto px-6 md:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
       <div class="flex flex-col items-center md:items-start gap-3">
@@ -1303,6 +1279,106 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
       <p class="text-center text-white/40 text-xs mt-6">Нажмите вне галереи или на крестик, чтобы закрыть</p>
     </div>
   </div>
+
+  
+  <script>
+  // ── Custom Type Dropdown ──
+  (function() {
+    const trigger = document.getElementById('typeSelectTrigger');
+    const options = document.getElementById('typeSelectOptions');
+    const arrow   = document.getElementById('typeSelectArrow');
+    const label   = document.getElementById('typeSelectLabel');
+    const hidden  = document.getElementById('type');
+    const tooltip = document.getElementById('typeInfoTooltip');
+    if (!trigger) return;
+
+    function openDropdown() {
+      options.classList.add('open');
+      trigger.setAttribute('aria-expanded', 'true');
+      arrow.style.transform = 'rotate(180deg)';
+    }
+    function closeDropdown() {
+      options.classList.remove('open');
+      trigger.setAttribute('aria-expanded', 'false');
+      arrow.style.transform = '';
+      hideTooltip();
+    }
+    function hideTooltip() {
+      tooltip.classList.remove('visible');
+    }
+
+    trigger.addEventListener('click', (e) => {
+      options.classList.contains('open') ? closeDropdown() : openDropdown();
+    });
+    trigger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openDropdown(); }
+      if (e.key === 'Escape') closeDropdown();
+    });
+
+    options.querySelectorAll('.custom-option').forEach(opt => {
+      opt.addEventListener('click', (e) => {
+        // Don't select if info button clicked
+        if (e.target.closest('.info-btn')) return;
+        const val = opt.dataset.value;
+        const text = opt.querySelector('span').textContent;
+        hidden.value = val;
+        label.textContent = text;
+        options.querySelectorAll('.custom-option').forEach(o => o.removeAttribute('aria-selected'));
+        opt.setAttribute('aria-selected', 'true');
+        closeDropdown();
+        // Trigger calculator recalculation
+        hidden.dispatchEvent(new Event('change', { bubbles: true }));
+        if (typeof updateCalc === 'function') updateCalc();
+        else document.getElementById('type').dispatchEvent(new Event('input', { bubbles: true }));
+      });
+    });
+
+    // Info tooltips
+    options.querySelectorAll('.info-btn').forEach(btn => {
+      function showTip(b) {
+        const text = b.dataset.info;
+        const opt = b.closest('.custom-option');
+        tooltip.textContent = text;
+        tooltip.classList.add('visible');
+        // Position below the option
+        const optRect = opt.getBoundingClientRect();
+        const wrapRect = document.getElementById('typeDropdownWrapper').getBoundingClientRect();
+        // Position above the dropdown trigger
+        tooltip.style.top = 'auto';
+        tooltip.style.bottom = 'calc(100% + 10px)';
+        tooltip.style.left = '0';
+        tooltip.style.right = 'auto';
+      }
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (tooltip.classList.contains('visible') && tooltip.textContent === btn.dataset.info) {
+          hideTooltip();
+        } else {
+          showTip(btn);
+        }
+      });
+      btn.addEventListener('mouseenter', (e) => { showTip(btn); });
+      btn.addEventListener('mouseleave', (e) => {
+        setTimeout(() => { if (!tooltip.matches(':hover')) hideTooltip(); }, 150);
+      });
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (!document.getElementById('typeDropdownWrapper').contains(e.target)) closeDropdown();
+    });
+
+    // Hook into calculator: patch the existing calc to read from hidden input
+    const origType = document.getElementById('type');
+    if (origType) {
+      origType.addEventListener('change', () => {
+        // find and trigger calc update
+        const calcArea = document.getElementById('area');
+        if (calcArea) calcArea.dispatchEvent(new Event('input'));
+      });
+    }
+  })();
+  </script>
 
   <nav class="mobile-nav-shell fixed bottom-8 left-0 right-0 flex justify-center items-center z-50 px-4 md:hidden">
     <div class="mobile-nav-inner bg-[#eae8de]/82 backdrop-blur-2xl rounded-full px-4 py-2 shadow-[0_30px_50px_rgba(56,56,49,0.08)] flex gap-1 min-w-[320px] items-center justify-around">

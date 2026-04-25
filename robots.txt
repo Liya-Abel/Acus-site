@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /privacy
+Disallow: /privacy.html
 
 Sitemap: https://acusdom.ru/sitemap.xml
