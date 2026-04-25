@@ -26,6 +26,7 @@
   <!-- ИСПРАВЛЕНО: объединены два запроса к Google Fonts в один -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preload" href="style.css" as="style"/>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
   <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/></noscript>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" as="style" onload="this.rel='stylesheet'"/>
@@ -517,7 +518,7 @@
     .info-tooltip.visible { display: block !important; animation: fadeIn .15s ease; }
     @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
   </style>
-  <link rel="preload" as="image" href="hero.webp">
+  <link rel="preload" as="image" href="hero.webp" imagesrcset="hero-mobile.webp 800w, hero.webp 1400w" imagesizes="100vw">
 <!-- Top.Mail.Ru counter -->
 <script type="text/javascript">
 var _tmr = window._tmr || (window._tmr = []);
@@ -613,7 +614,7 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
   <header id="home" class="hero-mobile-tight relative flex items-center pt-40 md:pt-44 pb-3 md:pb-5 min-h-[72vh] md:min-h-[80vh] overflow-hidden">
     <div class="absolute inset-0 z-0">
       <!-- ИСПРАВЛЕНО: добавлен alt-атрибут -->
-      <img fetchpriority="high" class="w-full h-full object-cover brightness-[0.85] saturate-[0.8]" src="hero.webp" alt="Каркасное строительство АКУС, Ленинградская область"/>
+      <img fetchpriority="high" class="w-full h-full object-cover brightness-[0.85] saturate-[0.8]" src="hero.webp" srcset="hero-mobile.webp 800w, hero.webp 1400w" sizes="100vw" alt="Каркасное строительство АКУС, Ленинградская область"/>
       <div class="absolute inset-0 bg-gradient-to-b from-transparent via-background/16 to-background"></div>
     </div>
  
