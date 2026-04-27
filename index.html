@@ -925,18 +925,18 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
               <label for="type" class="block text-sm font-bold uppercase tracking-widest text-on-surface/60">Тип постройки</label>
               <div class="relative" id="typeDropdownWrapper">
                   <!-- Скрытый input для передачи значения в калькулятор -->
-                  <input type="hidden" id="type" value="25000"/>
+                  <input type="hidden" id="type" value="21739"/>
                   <!-- Кастомный дропдаун -->
                   <div class="custom-select-trigger w-full bg-surface-container/60 px-6 py-4 rounded-2xl border-none focus:ring-2 focus:ring-primary text-xl font-medium cursor-pointer flex items-center justify-between select-none" id="typeSelectTrigger" tabindex="0" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-label="Тип постройки">
                     <span id="typeSelectLabel">Каркасный дом — Эконом</span>
                     <span class="material-symbols-outlined text-on-surface-variant" style="font-size:20px;transition:transform .2s" id="typeSelectArrow">expand_more</span>
                   </div>
                   <ul class="custom-select-options absolute left-0 right-0 top-full mt-2 bg-surface-container-high rounded-2xl shadow-xl z-50 overflow-hidden hidden" id="typeSelectOptions" role="listbox" aria-label="Тип постройки">
-                    <li class="custom-option flex items-center justify-between px-6 py-3.5 cursor-pointer hover:bg-primary/10 transition-colors text-base font-medium" data-value="25000" role="option" aria-selected="true">
+                    <li class="custom-option flex items-center justify-between px-6 py-3.5 cursor-pointer hover:bg-primary/10 transition-colors text-base font-medium" data-value="21739" role="option" aria-selected="true">
                       <span>Каркасный дом — Эконом</span>
                       <button type="button" class="info-btn ml-3 flex-shrink-0 w-6 h-6 rounded-full bg-primary/15 text-primary flex items-center justify-center text-xs font-bold hover:bg-primary/30 transition-colors" data-info="Каркасный дом класса «Эконом»&#10;&#10;• Надёжный каркас + утепление 150 мм&#10;• Фасад — имитация бруса&#10;• Кровля — металлочерепица&#10;• Черновые полы — фанера&#10;&#10;Прочная конструкция с симпатичным внешним видом по доступной цене." aria-label="Информация об Эконом">ⓘ</button>
                     </li>
-                    <li class="custom-option flex items-center justify-between px-6 py-3.5 cursor-pointer hover:bg-primary/10 transition-colors text-base font-medium" data-value="42000" role="option">
+                    <li class="custom-option flex items-center justify-between px-6 py-3.5 cursor-pointer hover:bg-primary/10 transition-colors text-base font-medium" data-value="36522" role="option">
                       <span>Каркасный дом — Стандарт</span>
                       <button type="button" class="info-btn ml-3 flex-shrink-0 w-6 h-6 rounded-full bg-primary/15 text-primary flex items-center justify-center text-xs font-bold hover:bg-primary/30 transition-colors" data-info="Каркасный дом класса «Стандарт»&#10;&#10;• Надёжный каркас + утепление 150 мм&#10;• Дополнительное утепление 50 мм&#10;• Фасад — имитация бруса&#10;• Кровля — металлочерепица&#10;• Черновые полы — фанера&#10;• Материалы повышенного качества&#10;&#10;Всё лучшее из Эконом плюс усиленная теплоизоляция и качественные материалы." aria-label="Информация о Стандарт">ⓘ</button>
                     </li>
@@ -1462,7 +1462,7 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
     const buildingCost = area * pricePerSq;
     const foundationCost = calculateFoundationCost(area, foundationType);
 
-    const totalWithReserve = buildingCost + foundationCost;
+    const totalWithReserve = (buildingCost + foundationCost) * 1.15;
     const roundedTotal = roundToThousands(totalWithReserve);
 
     if (priceOutput) {
