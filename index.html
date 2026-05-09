@@ -39,7 +39,7 @@
       line-height: 1;
     }
  
-    html, body { overflow-x: hidden; }
+    html { overflow-x: hidden; }
  
     body {
       font-family: 'Manrope', sans-serif;
@@ -616,9 +616,15 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
         <a class="font-medium text-sm uppercase tracking-widest text-[#56514a] hover:text-[#745b22] transition-colors" href="#faq">FAQ</a>
       </div>
  
-      <a href="#contact" class="desktop-only hidden md:inline-flex bg-gradient-to-tr from-[#745b22] to-[#d5b35d] text-white px-8 py-3 rounded-full font-bold text-xs uppercase tracking-widest hover:opacity-85 transition-all">
-        Связаться с нами
-      </a>
+      <div class="flex items-center gap-6">
+        <a href="tel:+79811036003" class="flex items-center gap-1.5 font-medium text-sm uppercase tracking-widest text-[#56514a] hover:text-[#745b22] transition-colors" aria-label="Позвонить нам">
+          <span class="material-symbols-outlined" style="font-size:18px">call</span>
+          <span class="hidden md:inline">+7 981 103-60-03</span>
+        </a>
+        <a href="#contact" class="desktop-only hidden md:inline-flex bg-gradient-to-tr from-[#745b22] to-[#d5b35d] text-white px-8 py-3 rounded-full font-bold text-xs uppercase tracking-widest hover:opacity-85 transition-all">
+          Связаться с нами
+        </a>
+      </div>
     </div>
   </nav>
   <main>
@@ -998,7 +1004,7 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
             </div>
  
             <div class="mt-8">
-              <button onclick="document.getElementById('feedbackForm').scrollIntoView({behavior: 'smooth'})" class="w-full bg-primary text-on-primary px-8 py-5 rounded-full font-bold uppercase tracking-widest text-sm hover:opacity-90 transition-all shadow-2xl shadow-primary/20 flex items-center justify-center gap-3">
+              <button id="calcRequestBtn" type="button" onclick="orderCalc()" class="w-full bg-primary text-on-primary px-8 py-5 rounded-full font-bold uppercase tracking-widest text-sm hover:opacity-90 transition-all shadow-2xl shadow-primary/20 flex items-center justify-center gap-3">
                 Заказать расчёт
                 <span class="material-symbols-outlined">arrow_forward</span>
               </button>
@@ -1098,7 +1104,7 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
             <div>
               <span class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Email</span>
               <!-- ИСПРАВЛЕНО: email восстановлен в читаемом виде (Cloudflare обфускация убрана) -->
-              <span class="text-lg font-bold"><!--email_off-->acusdom@mail.ru<!--/email_off--></span>
+              <a href="mailto:acusdom@mail.ru" class="text-lg font-bold hover:text-primary transition-colors"><!--email_off-->acusdom@mail.ru<!--/email_off--></a>
             </div>
           </div>
  
@@ -1108,7 +1114,7 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
             </div>
             <div>
               <span class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Телефон / мессенджеры</span>
-              <span class="text-lg font-bold">+7 981 103-60-03</span>
+              <a href="tel:+79811036003" class="text-lg font-bold hover:text-primary transition-colors">+7 981 103-60-03</a>
             </div>
           </div>
         </div>
@@ -1171,6 +1177,27 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
           <option>Другое</option>
         </select>
  
+        <!-- Плашка с данными из калькулятора — скрыта до нажатия «Заказать расчёт» -->
+        <div id="calcSummaryPlate" class="hidden rounded-2xl border" style="background:rgba(116,91,34,0.06);border-color:rgba(116,91,34,0.2);padding:16px 20px 18px;">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest mb-3" style="color:#745b22;">
+            <span class="material-symbols-outlined" style="font-size:15px;line-height:1;">calculate</span>
+            Данные из калькулятора
+          </div>
+          <div class="grid gap-y-1.5 text-sm" style="grid-template-columns:1fr 1fr;">
+            <span class="text-on-surface-variant">Тип постройки</span>
+            <span id="plateType" class="font-semibold"></span>
+            <span class="text-on-surface-variant">Площадь</span>
+            <span id="plateArea" class="font-semibold"></span>
+            <span class="text-on-surface-variant">Фундамент</span>
+            <span id="plateFoundation" class="font-semibold"></span>
+          </div>
+          <div class="grid mt-3 pt-3 text-sm" style="grid-template-columns:1fr 1fr;border-top:1px solid rgba(116,91,34,0.15);">
+            <span class="font-bold text-on-surface-variant">Итого</span>
+            <span id="plateTotal" class="font-bold" style="color:#745b22;"></span>
+          </div>
+        </div>
+        <input type="hidden" name="Расчёт из калькулятора" id="calcDataHidden"/>
+
         <textarea
           required
           name="Комментарий"
@@ -1664,6 +1691,45 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
     }
 
   
+    // Заказать расчёт — подставляет данные в плашку основной формы и скроллит к ней
+    function getCalcValues() {
+      const area = document.getElementById('area').value || '—';
+      const typeLabel = document.getElementById('typeSelectLabel').textContent.trim();
+      const foundationSelect = document.getElementById('foundation');
+      const foundationLabel = foundationSelect.options[foundationSelect.selectedIndex].text;
+      const total = document.getElementById('price').textContent + ' ₽';
+      return { area, typeLabel, foundationLabel, total };
+    }
+
+    function updateCalcPlate(vals) {
+      const plate = document.getElementById('calcSummaryPlate');
+      if (!plate) return;
+      document.getElementById('plateType').textContent = vals.typeLabel;
+      document.getElementById('plateArea').textContent = vals.area + ' м²';
+      document.getElementById('plateFoundation').textContent = vals.foundationLabel;
+      document.getElementById('plateTotal').textContent = vals.total;
+      const hidden = document.getElementById('calcDataHidden');
+      if (hidden) hidden.value = vals.typeLabel + ', ' + vals.area + ' м², ' + vals.foundationLabel + ', ' + vals.total;
+      plate.classList.remove('hidden');
+    }
+
+    window.orderCalc = function() {
+      updateCalcPlate(getCalcValues());
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    // Живое обновление плашки при изменении калькулятора (если она уже открыта)
+    ['area', 'type', 'foundation'].forEach(function(id) {
+      document.getElementById(id)?.addEventListener('input', function() {
+        const plate = document.getElementById('calcSummaryPlate');
+        if (plate && !plate.classList.contains('hidden')) updateCalcPlate(getCalcValues());
+      });
+      document.getElementById(id)?.addEventListener('change', function() {
+        const plate = document.getElementById('calcSummaryPlate');
+        if (plate && !plate.classList.contains('hidden')) updateCalcPlate(getCalcValues());
+      });
+    });
+
     // Живая проверка ссылок при вводе
     (() => {
       const _urlRe = /(https?:\/\/|ftp:\/\/|www\.|t\.me\/|vk\.com|wa\.me|bit\.ly|tinyurl|[a-zA-Z0-9][a-zA-Z0-9\-]{0,40}\.(ru|com|net|org|info|biz|me|io|su|site|online|shop|store)(\/|$))/i;
@@ -1679,6 +1745,14 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
       });
     })();
   </script>
+
+
+  <!-- Telegram fixed button -->
+  <a href="https://t.me/korobkanesobaka" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram" class="fixed bottom-28 md:bottom-6 right-6 z-[999] w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform" style="background:#229ED9;">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
+    </svg>
+  </a>
 
 
   <!-- VK Pixel Events — отслеживание кликов по кнопкам -->
