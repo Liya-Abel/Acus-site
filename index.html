@@ -1137,6 +1137,9 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
  
         <!-- Honeypot: боты заполняют это поле — мы его игнорируем -->
         <input class="hp-field" type="text" name="_honey" tabindex="-1" autocomplete="off"/>
+        <!-- Служебные поля formsubmit.co -->
+        <input type="hidden" name="_captcha" value="false"/>
+        <input type="hidden" name="_subject" value="Новая заявка с сайта АКУС"/>
  
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <input
@@ -1628,16 +1631,22 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
             method: 'POST',
             body: formData
           });
- 
-          if (!response.ok) throw new Error('Network response was not ok');
- 
-          // Показываем модалку успеха
+
+          const result = await response.json().catch(() => ({}));
+          // formsubmit.co возвращает {"success":"true"} при успехе
+          if (!response.ok || result.success !== 'true') throw new Error('send error');
+
+          // Успех — показываем модалку и стреляем Метрикой
           successModal.classList.remove('modal-hidden');
           successModal.classList.add('flex');
           form.reset();
- 
+
+          // Метрика — только при реальной успешной отправке
+          if (typeof ym !== 'undefined') {
+            ym(108862476, 'reachGoal', 'form_submit');
+          }
+
         } catch (error) {
-          // ИСПРАВЛЕНО: inline-ошибка вместо alert()
           formErrorMsg.classList.add('visible');
         } finally {
           submitBtn.textContent = 'Отправить заявку';
@@ -1754,13 +1763,7 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
     document.addEventListener('DOMContentLoaded', function() {
       var tmr = window._tmr || [];
 
-      // 1. ОТПРАВИТЬ ЗАЯВКУ — главная конверсия
-      var submitBtn = document.getElementById('submitBtn');
-      if (submitBtn) {
-        submitBtn.addEventListener('click', function() {
-          tmr.push({ type: 'reachGoal', id: '3755711', goal: 'lead' });
-        });
-      }
+      // 1. ОТПРАВИТЬ ЗАЯВКУ — цель переехала в обработчик fetch (стреляет только при успехе)
 
       // 2. «Понятно» в модалке — подтверждённая отправка
       var closeModal = document.getElementById('closeSuccessModal');
