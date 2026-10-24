@@ -538,10 +538,10 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": ["GeneralContractor", "HomeAndConstructionBusiness"],
     "name": "АКУС",
     "alternateName": "АКУС — Строительство без сюрпризов",
-    "description": "Строительство каркасных домов, бытовок и хозблоков в Ленинградской области с 2012 года",
+    "description": "Строительство каркасных домов, бытовок и хозблоков под ключ в Ленинградской области и Санкт-Петербурге с 2012 года. 120+ объектов, гарантия 30 лет.",
     "url": "https://acusdom.ru",
     "telephone": "+79811036003",
     "email": "acusdom@mail.ru",
@@ -560,22 +560,32 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
       "longitude": 30.6454
     },
     "areaServed": [
-      {"@type": "State", "name": "Ленинградская область"},
-      {"@type": "City", "name": "Санкт-Петербург"}
+      {"@type": "AdministrativeArea", "name": "Ленинградская область"},
+      {"@type": "City", "name": "Санкт-Петербург"},
+      {"@type": "City", "name": "Всеволожск"},
+      {"@type": "City", "name": "Гатчина"},
+      {"@type": "City", "name": "Выборг"}
     ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Услуги строительства",
       "itemListElement": [
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Строительство каркасных домов"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Строительство бытовок и хозблоков"}},
+        {
+          "@type": "Offer",
+          "itemOffered": {"@type": "Service", "name": "Строительство каркасных домов под ключ"},
+          "priceSpecification": {"@type": "UnitPriceSpecification", "price": "25000", "priceCurrency": "RUB", "unitText": "м²", "description": "от 25 000 ₽/м² (Эконом)"}
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {"@type": "Service", "name": "Строительство бытовок и хозблоков"},
+          "priceSpecification": {"@type": "UnitPriceSpecification", "price": "8625", "priceCurrency": "RUB", "unitText": "м²", "description": "от 8 625 ₽/м²"}
+        },
         {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Пристройки и террасы"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Фундаменты"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Фундаменты (свайный, плита, лента)"}},
         {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Кровельные работы"}}
       ]
     },
     "foundingDate": "2012",
-    "numberOfEmployees": {"@type": "QuantitativeValue", "value": 5},
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
@@ -583,7 +593,9 @@ _tmr.push({id: "3755711", type: "pageView", start: (new Date()).getTime()});
       "closes": "21:00"
     },
     "priceRange": "₽₽",
-    "sameAs": ["https://vk.com/acusdom"]
+    "sameAs": [
+      "https://vk.com/acusdom"
+    ]
   }
   </script>
 
